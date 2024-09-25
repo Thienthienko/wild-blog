@@ -1,6 +1,6 @@
 <div class="blocArticle">
   <div class="infoArticle">
-    <h2>Hey !</h2>
+    <h2>Hey {{ name }}!</h2>
     <p>
       Actuellement en reconversion professionnelle après huit ans en tant que
       Responsable Planning dans un laboratoire d'analyse de la qualité de l'air
@@ -9,12 +9,20 @@
     </p>
   </div>
 
+  <button (click)="sayHello()">Dire Bonjour</button>
   <div>
-    <p>
-      Mon parcours dans le domaine de l’amiante m’a inculqué des valeurs telles
-      que la rigueur, la sécurité, les délais et le respect des normes, des
-      qualités que je compte bien mettre à profit dans ma future carrière en
-      développement web.
-    </p>
+    <img [src]="article.image" [alt]="name" />
+    <h3>
+      {{ article.title }}
+    </h3>
+    <h4>{{ article.author }}</h4>
+    <div [hidden]="!article.isPublished">
+      <p>{{ article.content }}</p>
+      <p>{{ article.comment }}</p>
+      <input type="text" [(ngModel)]="article.comment" />
+    </div>
   </div>
+  <button (click)="togglePublication()">
+    {{ article.isPublished ? "Dépublier" : "Publier" }}
+  </button>
 </div>

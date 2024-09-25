@@ -1,11 +1,22 @@
+$card-bg-color: #f9f9f9;
+
+$text-color: #333333;
+$card-padding: 20px;
+$card-border-radius: 10px;
+$max-width: 600px;
+
 .blocArticle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  margin: 50px;
-  padding: 50px;
-  border-radius: 10px;
+  background-color: $card-bg-color;
+  border-radius: $card-border-radius;
+  padding: $card-padding;
+  margin: 20px auto;
+  max-width: $max-width;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: $text-color;
+  }
 }
