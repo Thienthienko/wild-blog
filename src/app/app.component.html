@@ -1,1 +1,18 @@
-<app-article-component></app-article-component>
+<div>
+  @for (articles of articles; track $index) { @if (articles.isPublished) {
+  <div class="articleCard">
+    <h3>{{ articles.title }}</h3>
+    <p>Author : {{ articles.author }}</p>
+    <img [src]="articles.image" alt="Article Image" />
+    <p [ngStyle]="{ color: articles.likes > 150 ? '#008000' : 'black' }">
+      {{ articles.content }}
+    </p>
+    <p>{{ articles.comment }}</p>
+    <p [ngClass]="{ 'popular-article': articles.likes > 100 }">
+      👍 : {{ articles.likes }}
+    </p>
+  </div>
+  } } @if (visibleArticles === 0) {
+  <p>aucun article</p>
+  }
+</div>

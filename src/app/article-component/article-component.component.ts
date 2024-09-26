@@ -19,7 +19,7 @@ export class ArticleComponentComponent {
     title: "Titre de l'article",
     author: 'John Doe',
     content: "Voici le contenu de l'article.",
-    image: 'https://via.placeholder.com/350x150',
+    image: 'mobile.png',
     isPublished: true,
     comment: '',
   };
