@@ -1,4 +1,5 @@
 <div>
+  <app-article-component></app-article-component>
   @for (articles of articles; track $index) { @if (articles.isPublished) {
   <div class="articleCard">
     <h3>{{ articles.title }}</h3>

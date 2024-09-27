@@ -11,15 +11,13 @@ import { Article } from './article';
 })
 export class ArticleComponentComponent {
   name: string = 'bob';
-  sayHello(): void {
-    alert('Bonjour !');
-  }
 
   article: Article = {
-    title: "Titre de l'article",
+    title: 'Baseball',
     author: 'John Doe',
-    content: "Voici le contenu de l'article.",
-    image: 'mobile.png',
+    content:
+      'Le baseball se joue avec deux équipes qui alternent en défense et en attaque. Neuf joueurs se trouvent sur le terrain en défense : un lanceur, un receveur et sept autres joueurs qui sont en défense répartis sur le terrain pour rattraper la balle, si possible de volée pour éliminer le batteur.',
+    image: 'baseball.png',
     isPublished: true,
     comment: '',
   };

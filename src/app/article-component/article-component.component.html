@@ -1,28 +1,22 @@
 <div class="blocArticle">
   <div class="infoArticle">
-    <h2>Hey {{ name }}!</h2>
-    <p>
-      Actuellement en reconversion professionnelle après huit ans en tant que
-      Responsable Planning dans un laboratoire d'analyse de la qualité de l'air
-      amiante, je suis désireux de mettre à profit mes compétences acquises à la
-      Wild Code School.
-    </p>
-  </div>
-
-  <button (click)="sayHello()">Dire Bonjour</button>
-  <div>
+    {{ article.isPublished ? "Article publié" : "Article non publié" }}
+    <h2>{{ article.title }}</h2>
     <img [src]="article.image" [alt]="name" />
-    <h3>
-      {{ article.title }}
-    </h3>
-    <h4>{{ article.author }}</h4>
-    <div [hidden]="!article.isPublished">
-      <p>{{ article.content }}</p>
+  </div>
+  <div class="articleContent">
+    <p class="author">
+      <em>{{ article.author }}</em>
+    </p>
+
+    <p>{{ article.content }}</p>
+    <div class="commentPart">
+      Commentaire :
       <p>{{ article.comment }}</p>
       <input type="text" [(ngModel)]="article.comment" />
+      <button class="button-4" (click)="togglePublication()">
+        Publier / Dépublier
+      </button>
     </div>
   </div>
-  <button (click)="togglePublication()">
-    {{ article.isPublished ? "Dépublier" : "Publier" }}
-  </button>
 </div>
