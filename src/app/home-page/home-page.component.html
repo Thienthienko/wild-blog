@@ -1,0 +1,9 @@
+@for (article of articles; track $index) { @if(article.isPublished) {
+<a [routerLink]="['/article', article.id]">
+  <h1>{{ article.title }}</h1>
+  <p>{{ article.content }}</p>
+  <p>Like: {{ article.likes }}</p>
+</a>
+} } @if(!publishedArticles.length) {
+<p>Aucun article disponible</p>
+}
