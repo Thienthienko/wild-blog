@@ -1,3 +1,8 @@
+<nav>
+  <a [routerLink]="['/']">Accueil</a>
+  <a [routerLink]="['/contact']">Contact</a>
+</nav>
+
 @for (article of articles; track $index) { @if(article.isPublished) {
 <a [routerLink]="['/article', article.id]">
   <h1>{{ article.title }}</h1>
