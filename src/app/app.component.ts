@@ -3,6 +3,16 @@ import { RouterOutlet } from '@angular/router';
 import { ArticleComponentComponent } from './article-component/article-component.component';
 import { CommonModule } from '@angular/common';
 
+interface Article {
+  title: string;
+  author: string;
+  content: string;
+  image: string;
+  isPublished: boolean;
+  comment: string;
+  likes: number;
+}
+
 @Component({
   selector: 'app-root',
   standalone: true,
