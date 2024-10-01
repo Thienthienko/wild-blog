@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -17,4 +17,15 @@ export class ArticlePageComponent {
       this.articleId = Number(params.get('id'));
     });
   }
+
+  @Input() article!: {
+    id: number;
+    title: string;
+    author: string;
+    content: string;
+    image: string;
+    isPublished: boolean;
+    comment: string;
+    likes: number;
+  };
 }
