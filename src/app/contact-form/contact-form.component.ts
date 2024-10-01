@@ -15,7 +15,7 @@ export class ContactFormComponent {
     lastname: '',
     firstname: '',
     email: '',
-    content: '',
+    password: '',
   };
 
   onSubmit(): void {
