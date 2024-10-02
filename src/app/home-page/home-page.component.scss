@@ -1,0 +1,33 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  background-color: rgb(223, 223, 223);
+  border-radius: 10px;
+}
+
+.links {
+  background-color: rgb(0, 0, 0);
+  background-image: linear-gradient(to bottom, #0003, transparent);
+  border-bottom: 1px solid #0003;
+  box-shadow: 0 0 32px #0003;
+  font-size: 1em;
+  font-weight: 300;
+}
+.links > a {
+  color: rgb(255, 255, 255);
+  padding: 0.75em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+.links > a:hover {
+  background: #89898906;
+  color: #adf;
+}
+.links > .line {
+  background: #68a;
+  height: 1px;
+  pointer-events: none;
+}
