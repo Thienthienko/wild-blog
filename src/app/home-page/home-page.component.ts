@@ -11,8 +11,6 @@ import { ArticlePageComponent } from '../article-page/article-page.component';
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
-  messageToChild: string = 'Bonjour depuis le parent !';
-
   articles = [
     {
       id: 1,

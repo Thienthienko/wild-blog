@@ -1,4 +1,4 @@
-<nav>
+<nav class="links">
   <a [routerLink]="['/']">Accueil</a>
   <a [routerLink]="['/contact']">Contact</a>
   <a [routerLink]="['/signup']">Inscription</a>
@@ -14,4 +14,6 @@
 <p>Aucun article disponible</p>
 } -->
 
-<app-article-page [article]="articles[0]"></app-article-page>
+@for (article of articles; track $index) {
+<app-article-page [article]="article"></app-article-page>
+}
