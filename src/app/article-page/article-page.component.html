@@ -3,9 +3,13 @@
 <p>{{ article.content }}</p>
 <p>Like: {{ article.likes }}</p> -->
 
-<div>
+<div class="articlePageComp">
+  <h3>Composant Article-Page (Enfant)</h3>
   <h2>{{ article.title }}</h2>
   <p>Auteur : {{ article.author }}</p>
   <p>{{ article.content }}</p>
   <p>Likes: {{ article.likes }}</p>
+  <button [ngClass]="{ likedButton: article.isLiked }" (click)="sendLike()">
+    ❤️
+  </button>
 </div>
