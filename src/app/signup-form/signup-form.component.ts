@@ -1,6 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
   AbstractControl,
+  FormArray,
   FormBuilder,
   FormsModule,
   ReactiveFormsModule,
@@ -8,11 +10,12 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink, CommonModule],
   templateUrl: './signup-form.component.html',
   styleUrl: './signup-form.component.scss',
 })
@@ -29,7 +32,27 @@ export class SignupFormComponent {
       },
       { validators: this.passwordMatchValidator() }
     ),
+    emergencyContacts: this.formBuilder.array([]), // FormArray
   });
+
+  // --------------------------- FormArray ----------------------------
+  get contacts() {
+    return this.signUpForm.get('emergencyContacts') as FormArray;
+  }
+
+  addEmergencyContact() {
+    const contactGroup = this.formBuilder.group({
+      name: [''],
+      phone: [''],
+    });
+    this.contacts.push(contactGroup);
+  }
+
+  removeEmergencyContact(index: number) {
+    this.contacts.removeAt(index);
+  }
+
+  // --------------------------- FormArray ----------------------------
 
   passwordMatchValidator(): ValidatorFn {
     return (formGroup: AbstractControl): ValidationErrors | null => {

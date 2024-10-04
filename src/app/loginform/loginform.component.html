@@ -1,0 +1,61 @@
+<div class="login-container">
+  <p class="text">Login! 👋</p>
+  <form class="formContainer" (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+    <div class="inputColumn">
+      <label class="label" for="password"><h3>Email</h3></label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        [(ngModel)]="loginInfo.email"
+        #email="ngModel"
+        placeholder="📧 thien@gmail.com"
+        required
+        email
+      />
+
+      @if (email.errors && email.touched) {
+      <div>
+        @if (email.errors['required']) {
+        <span class="errorMessage">L'email est requis</span>
+        } @if (email.errors['email']) {
+        <span class="errorMessage">L'email est invalide.</span>
+        }
+      </div>
+      }
+    </div>
+    <div class="inputColumn">
+      <label for="password"><h3>Password</h3></label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="loginInfo.password"
+        #password="ngModel"
+        placeholder="🔒******"
+        required
+        minlength="8"
+        password
+      />
+      @if (password.errors && password.touched) {
+      <div>
+        @if (password.errors['required']) {
+        <p class="errorMessage">Le mot de passe est requis.</p>
+        } @if (password.errors['email']) {
+        <span class="errorMessage">Le mot de passe est invalide.</span>
+        }
+      </div>
+      }
+    </div>
+
+    <button class="button" type="submit">Sign In</button>
+
+    <span class="errorMessage">{{ submissionMessage }}</span>
+  </form>
+  <div>
+    <p>Don't have an account?</p>
+    <p>
+      <a [routerLink]="['/signup']">Sign Up Now</a>
+    </p>
+  </div>
+</div>

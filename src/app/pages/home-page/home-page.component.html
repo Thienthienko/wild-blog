@@ -1,12 +1,10 @@
-<nav class="links">
-  <a [routerLink]="['/']">Accueil</a>
-  <a [routerLink]="['/contact']">Contact</a>
-  <a [routerLink]="['/signup']">Inscription</a>
-</nav>
-
+<div class="logo">
+  <img [src]="imageSrc" [alt]="" />
+</div>
 <div class="homePageComp">
   <h3>Composant Home-page (Parent)</h3>
-  <p>Message reçu de l'enfant : {{ messageFromChild }}</p>
+  <p>Message reçu de l'enfant :</p>
+  <p>{{ messageFromChild }}</p>
 </div>
 
 @for (article of articles; track $index) {
