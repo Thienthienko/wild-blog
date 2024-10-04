@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ArticlePageComponent } from '../article-page/article-page.component';
-import { Article } from '../models/article';
+import { ArticlePageComponent } from '../../article-page/article-page.component';
+import { Article } from '../../models/article';
 
 @Component({
   selector: 'app-home-page',
@@ -12,6 +12,8 @@ import { Article } from '../models/article';
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
+  imageSrc: string = 'angularlogo.png';
+
   messageFromChild: string = '';
 
   handleNotification(message: string) {

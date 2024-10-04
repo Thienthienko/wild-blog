@@ -1,42 +1,47 @@
 <p class="text">Sign Up Form</p>
 <form class="formContainer" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
   <div class="inputLine">
-    @if (signUpForm.get('username')?.invalid &&
-    signUpForm.get('username')?.touched) {
-    <div>
-      @if (signUpForm.get('username')?.errors?.['required']) {
-      <span>Le nom d'utilisateur est requis.</span>
-      } @if (signUpForm.get('username')?.errors?.['minlength']) {
-      <span>Le nom doit comporter au moins 3 caractères.</span>
-      }
-    </div>
-    }
     <div class="inputColumn">
-      <label for="username">Nom d'utilisateur</label>
+      <label for="username"><h3>Nom d'utilisateur</h3></label>
       <input id="username" formControlName="username" />
-      <div class="underline"></div>
+      @if (signUpForm.get('username')?.invalid &&
+      signUpForm.get('username')?.touched) {
+      <div>
+        @if (signUpForm.get('username')?.errors?.['required']) {
+        <span>Le nom d'utilisateur est requis.</span>
+        } @if (signUpForm.get('username')?.errors?.['minlength']) {
+        <span>Le nom doit comporter au moins 3 caractères.</span>
+        }
+      </div>
+      }
     </div>
   </div>
   <div class="inputLine">
     <div class="inputColumn">
-      <label for="email">Email</label>
+      <label for="email"><h3>Email</h3></label>
       <input id="email" formControlName="email" />
-      <div class="underline"></div>
+      @if (signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched)
+      {
+      <div>
+        @if (signUpForm.get('email')?.errors?.['required']) {
+        <span>L'email est requis.</span>
+        }
+      </div>
+      }
     </div>
   </div>
 
   <div formGroupName="passwords">
     <div class="inputLine">
       <div class="inputColumn">
-        <label for="password">Mot de passe</label>
+        <label for="password"><h3>Mot de passe</h3></label>
         <input type="password" id="password" formControlName="password" />
         @if (signUpForm.get('passwords.password')?.invalid &&
         signUpForm.get('passwords.password')?.touched) {
         <div>
           @if (signUpForm.get('passwords.password')?.errors?.['required']) {
           <span>Le mot de passe est requis.</span>
-          } @if
-          (signUpForm.get('passwords.password')?.errors?.['securePassword']) {
+          } @if (signUpForm.get('password')?.errors?.['securePassword']) {
           <span
             >Le mot de passe doit contenir au moins 12 caractères, avec une
             majuscule, une minuscule, un chiffre, et un caractère spécial.</span
@@ -49,12 +54,13 @@
 
     <div class="inputLine">
       <div class="inputColumn">
-        <label for="confirmPassword">Confirmer le mot de passe</label>
+        <label for="confirmPassword"><h3>Confirmer le mot de passe</h3></label>
         <input
           type="password"
           id="confirmPassword"
           formControlName="confirmPassword"
         />
+
         @if (signUpForm.get('passwords')?.errors?.['passwordsMismatch'] &&
         signUpForm.get('passwords')?.touched) {
         <span>Les mots de passe ne correspondent pas.</span>
@@ -65,4 +71,46 @@
   <button class="button" type="submit" [disabled]="signUpForm.invalid">
     S'inscrire
   </button>
+
+  <!-- FormArray -->
+
+  <div formArrayName="emergencyContacts">
+    <h2>A contacter en cas d'urgence</h2>
+    <button class="button" type="button" (click)="addEmergencyContact()">
+      + Ajouter un contact
+    </button>
+    <div
+      class="formContainer"
+      *ngFor="let contact of contacts.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="inputColumn">
+        <label for="emergencyContactName-{{ i }}"><h3>Nom :</h3></label>
+        <input
+          id="emergencyContactName-{{ i }}"
+          type="text"
+          formControlName="name"
+        />
+      </div>
+      <div class="inputColumn">
+        <label for="emergencyContactPhone-{{ i }}"><h3>Téléphone :</h3></label>
+        <input
+          id="emergencyContactPhone-{{ i }}"
+          type="text"
+          formControlName="phone"
+        />
+      </div>
+      <button class="button" type="button" (click)="removeEmergencyContact(i)">
+        Supprimer ce contact
+      </button>
+    </div>
+  </div>
+
+  <!-- FormArray -->
 </form>
+<div>
+  <p>Already have an account?</p>
+  <p>
+    <a [routerLink]="['/signin']">Sign In Now</a>
+  </p>
+</div>

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ArticleComponentComponent } from './article-component/article-component.component';
 import { CommonModule } from '@angular/common';
-import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 interface Article {
   title: string;
@@ -22,6 +23,7 @@ interface Article {
     ArticleComponentComponent,
     CommonModule,
     HomePageComponent,
+    NavbarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

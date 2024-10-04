@@ -1,78 +1,86 @@
-<form #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit()">
-  <!-- Champ Prénom -->
-  <fieldset>
-    <label for="firstname">Prénom</label>
-    <input
-      id="firstname"
-      name="firstname"
-      type="text"
-      [(ngModel)]="newMessage.firstname"
-      #firstname="ngModel"
+<!-- <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <label for="name">Nom</label>
+  <input type="text" id="name" formControlName="name" />
+  <label for="email">Email</label>
+  <input type="email" id="email" formControlName="email" />
+</form> -->
+
+<p class="text">Contact</p>
+<form
+  class="formContainer"
+  #contactForm="ngForm"
+  (ngSubmit)="contactForm.valid && onSubmit()"
+>
+  <div class="nomPrenom">
+    <div class="inputColumn">
+      <label for="firstname"><h3>Prénom</h3></label>
+      <input
+        id="firstname"
+        name="firstname"
+        type="text"
+        [(ngModel)]="newMessage.firstname"
+        #firstname="ngModel"
+        required
+        minlength="2"
+        maxlength="15"
+      />
+      @if (firstname.errors) {
+      <div>
+        @if (firstname.errors['required']) {
+        <span>Le prénom est requis !</span>
+        } @if (firstname.errors['minlength']) {
+        <span>Le prénom doit comporter au moins 2 caractères.</span>
+        } @if (firstname.errors['maxlength']){
+        <span>Le prénom ne doit pas dépasser 15 caractères.</span>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="inputColumn">
+      <label for="lastname"><h3>Nom</h3></label>
+      <input
+        id="lastname"
+        name="lastname"
+        type="text"
+        [(ngModel)]="newMessage.lastname"
+        #lastname="ngModel"
+        required
+        minlength="2"
+        maxlength="15"
+      />
+      @if (lastname.errors) {
+      <div>
+        @if (lastname.errors['required']) {
+        <span>Le nom est requis</span>
+        } @if (lastname.errors['minlength']) {
+        <span>Le nom doit comporter au moins 2 caractères.</span>
+        }@if (lastname.errors['maxlength']){
+        <span>Le nom ne doit pas dépasser 15 caractères.</span>
+        }
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="inputColumn">
+    <label for="message"><h3>Message</h3></label>
+    <textarea
+      id="message"
+      name="message"
+      type="message"
+      [(ngModel)]="newMessage.message"
+      #message="ngModel"
       required
-      minlength="2"
-      maxlength="15"
-    />
-    @if (firstname.errors) {
+    ></textarea>
+    @if (message.errors) {
     <div>
-      @if (firstname.errors['required']) {
-      <span>Le prénom est requis !</span>
-      } @if (firstname.errors['minlength']) {
-      <span>Le prénom doit comporter au moins 2 caractères.</span>
-      } @if (firstname.errors['maxlength']){
-      <span>Le prénom ne doit pas dépasser 15 caractères.</span>
+      @if (message.errors['required']) {
+      <span>Un message est requis.</span>
       }
     </div>
     }
-  </fieldset>
+  </div>
 
-  <!-- Champ Nom -->
-  <fieldset>
-    <label for="lastname">Nom</label>
-    <input
-      id="lastname"
-      name="lastname"
-      type="text"
-      [(ngModel)]="newMessage.lastname"
-      #lastname="ngModel"
-      required
-      minlength="2"
-      maxlength="15"
-    />
-    @if (lastname.errors) {
-    <div>
-      @if (lastname.errors['required']) {
-      <span>Le nom est requis</span>
-      } @if (lastname.errors['minlength']) {
-      <span>Le nom doit comporter au moins 2 caractères.</span>
-      }@if (lastname.errors['maxlength']){
-      <span>Le nom ne doit pas dépasser 15 caractères.</span>
-      }
-    </div>
-    }
-  </fieldset>
-
-  <!-- Champ Email -->
-  <fieldset>
-    <label for="email">Contact</label>
-    <input
-      id="email"
-      name="email"
-      type="email"
-      [(ngModel)]="newMessage.email"
-      #email="ngModel"
-      required
-      email
-    />
-    @if (email.errors) {
-    <div>
-      @if (email.errors['required']) {
-      <span>L'email est requis.</span>
-      } @if (email.errors['email']) {
-      <span>L'email est invalide.</span>
-      }
-    </div>
-    }
-  </fieldset>
-
-  <button type="submit">Envoyer</button>
+  <button class="button" type="submit">Envoyer</button>
 </form>
